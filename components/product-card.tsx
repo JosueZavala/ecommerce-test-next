@@ -17,8 +17,9 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
+  const { addToCart } = useCart();
   const handleAddToCart = () => {
-    /* addToCart(product) */
+    addToCart(product);
   };
 
   return (

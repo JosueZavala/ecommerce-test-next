@@ -1,6 +1,6 @@
 "use client";
 
-import { useCart } from "@/contexts/cart-context";
+import { CartContext, useCart } from "@/contexts/cart-context";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -12,13 +12,11 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { ShoppingCart, Minus, Plus, Trash2 } from "lucide-react";
 import Image from "next/image";
+import { useContext } from "react";
 
 export function CartSidebar() {
-  const {
-    items,
-    total,
-    itemCount /* updateQuantity, removeFromCart, clearCart */,
-  } = useCart();
+  const { items, total, itemCount, updateQuantity, removeFromCart, clearCart } =
+    useCart();
 
   return (
     <Sheet>
@@ -87,9 +85,9 @@ export function CartSidebar() {
                             variant="outline"
                             size="icon"
                             className="h-8 w-8 bg-transparent"
-                            /* onClick={() =>
+                            onClick={() =>
                               updateQuantity(item.id, item.quantity - 1)
-                            } */
+                            }
                           >
                             <Minus className="h-3 w-3" />
                           </Button>
@@ -102,9 +100,9 @@ export function CartSidebar() {
                             variant="outline"
                             size="icon"
                             className="h-8 w-8 bg-transparent"
-                            /* onClick={() =>
+                            onClick={() =>
                               updateQuantity(item.id, item.quantity + 1)
-                            } */
+                            }
                           >
                             <Plus className="h-3 w-3" />
                           </Button>
@@ -116,7 +114,7 @@ export function CartSidebar() {
                           variant="ghost"
                           size="icon"
                           className="h-8 w-8 text-destructive hover:text-destructive"
-                          /* onClick={() => removeFromCart(item.id)} */
+                          onClick={() => removeFromCart(item.id)}
                         >
                           <Trash2 className="h-4 w-4" />
                         </Button>
@@ -144,7 +142,7 @@ export function CartSidebar() {
                   <Button
                     variant="outline"
                     className="w-full bg-transparent"
-                    /* onClick={clearCart} */
+                    onClick={clearCart}
                   >
                     Vaciar Carrito
                   </Button>
